@@ -10,7 +10,7 @@
 - Adriano Savi  - [perfil](https://github.com/AdrianoReusSavi)
 - Guilherme Dalmolin - [perfil](https://github.com/GuiDalmolin)
 - Yuri Damin - [perfil](https://github.com/YuriDamin)
-- Roger Bonfante - [perfil](https://github.com/RogerHenriqueAlvesRodrigues)
+- Roger Henrique - [perfil](https://github.com/RogerHenriqueAlvesRodrigues)
 
 
 ### Modelo Físico:
