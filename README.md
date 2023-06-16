@@ -14,16 +14,14 @@
 
 
 ### Modelo Físico:
-Utilizado https://dbdiagram.io/<br>
-Arquivo fonte: <code>link pro arquivo</code><br>
-<code>Imagem</code>
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/36aac6c4-412a-417d-ae0e-853fb1563639)
   
 ### Dicionário de Dados:
 <code>Excel ou tabela do Github (markdown)</code>
 
 ### Scripts DDL Criação do Database:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>1 arquivo SQL por objeto</code>
+<code>[arquivo de criação do banco de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/createDatabase.sql)</code>
 
 ### Scripts Popula tabelas:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
@@ -33,5 +31,5 @@ Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
 <code>1 arquivo SQL por objeto</code>
   
 ### Código do sistema:
-Linguagem de Programação C# .NET.<br>
+Linguagem de Programação: JavaScript, HTML e CSS<br>
 <code>código fonte da aplicação</code>
