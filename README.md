@@ -14,14 +14,14 @@
 
 
 ### Modelo Físico:
-![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/36aac6c4-412a-417d-ae0e-853fb1563639)
-  
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/69534716/892597fb-ea7c-4657-8b0e-0a019427a3b7)
+
 ### Dicionário de Dados:
-<code>Excel ou tabela do Github (markdown)</code>
+<code>[Arquivo de dicionário de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Dicionario_de_dados.xlsx)</code>
 
 ### Scripts DDL Criação do Database:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>[arquivo de criação do banco de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/createDatabase.sql)</code>
+<code>[Arquivo de criação do banco de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/createDatabase.sql)</code>
 
 ### Scripts Popula tabelas:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
