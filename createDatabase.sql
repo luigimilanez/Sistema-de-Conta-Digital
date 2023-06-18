@@ -135,12 +135,13 @@ GO
 -- ************************************** [Fatura]
 CREATE TABLE [Fatura]
 (
- [id_fatura] int NOT NULL ,
- [ativo]     bit NOT NULL ,
- [id_trans]  int NOT NULL ,
- [id_conta]  int NOT NULL ,
- [valor]     numeric(14,2) NULL ,
- [dt_venc]   date NOT NULL ,
+ [id_fatura]     int NOT NULL ,
+ [ativo]         bit NOT NULL ,
+ [id_trans]      int NOT NULL ,
+ [id_conta]      int NOT NULL ,
+ [valor]         numeric(14,2) NULL ,
+ [valor_emprest] numeric(14,2) NULL ,
+ [dt_venc]       date NOT NULL ,
 
 
  CONSTRAINT [pk_Fatura] PRIMARY KEY CLUSTERED ([id_fatura] ASC),
