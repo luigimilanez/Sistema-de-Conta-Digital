@@ -1,7 +1,7 @@
 -- ************************************** [Cliente]
 CREATE TABLE [Cliente]
 (
- [id_cliente] int NOT NULL ,
+ [id_cliente] int identity ,
  [ativo]      bit NOT NULL ,
  [nome]       varchar(100) NOT NULL ,
  [cpf]        varchar(18) NOT NULL ,
@@ -24,7 +24,7 @@ GO
 -- ************************************** [Conta]
 CREATE TABLE [Conta]
 (
- [id_conta]    int NOT NULL ,
+ [id_conta]    int identity ,
  [id_cliente]  int NOT NULL ,
  [tp_conta]    varchar(64) NOT NULL ,
  [saldo_real]  numeric(14,2) NOT NULL ,
@@ -43,7 +43,7 @@ GO
 -- ************************************** [Cambio]
 CREATE TABLE [Cambio]
 (
- [id_cambio]    int NOT NULL ,
+ [id_cambio]    int identity ,
  [id_conta]     int NOT NULL ,
  [moeda_origem] varchar(10) NOT NULL ,
  [moeda_dest]   varchar(10) NOT NULL ,
@@ -61,7 +61,7 @@ GO
 -- ************************************** [Investimento]
 CREATE TABLE [Investimento]
 (
- [id_invest]       int NOT NULL ,
+ [id_invest]       int identity ,
  [ativo]           bit NOT NULL ,
  [id_conta]        int NOT NULL ,
  [tp_investimento] varchar(64) NOT NULL ,
@@ -79,7 +79,7 @@ GO
 -- ************************************** [Emprestimo]
 CREATE TABLE [Emprestimo]
 (
- [id_emprest]       int NOT NULL ,
+ [id_emprest]       int identity ,
  [id_conta]         int NOT NULL ,
  [valor_emprest]    numeric(14,2) NOT NULL ,
  [taxa_juros]       tinyint NOT NULL ,
@@ -97,7 +97,7 @@ GO
 -- ************************************** [Cartao]
 CREATE TABLE [Cartao]
 (
- [id_cartao]   int NOT NULL ,
+ [id_cartao]   int identity ,
  [ativo]       bit NOT NULL ,
  [id_conta]    int NOT NULL ,
  [numero]      varchar(16) NOT NULL ,
@@ -116,7 +116,7 @@ GO
 -- ************************************** [Transacao]
 CREATE TABLE [Transacao]
 (
- [id_trans]   int NOT NULL ,
+ [id_trans]   int identity ,
  [id_conta]   int NOT NULL ,
  [id_cliente] int NOT NULL ,
  [data]       datetime NOT NULL ,
@@ -135,7 +135,7 @@ GO
 -- ************************************** [Fatura]
 CREATE TABLE [Fatura]
 (
- [id_fatura]     int NOT NULL ,
+ [id_fatura]     int identity ,
  [ativo]         bit NOT NULL ,
  [id_trans]      int NOT NULL ,
  [id_conta]      int NOT NULL ,
