@@ -25,7 +25,7 @@ Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
 
 ### Scripts Popula tabelas:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>1 arquivo SQL por objeto</code>
+<code>[Arquivo de insert das tabelas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/populaTabela.sql)</code>
 
 ### Objetos de BD (stored procedure, triggers e functions):
 <code>1 arquivo SQL por objeto</code>
