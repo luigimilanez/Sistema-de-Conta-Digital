@@ -17,18 +17,18 @@
 ![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/69534716/892597fb-ea7c-4657-8b0e-0a019427a3b7)
 
 ### Dicionário de Dados:
-<code>[Arquivo de dicionário de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Dicionario_de_dados.xlsx)</code>
+<code>[Arquivo de dicionário de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Dicion%C3%A1rio/Dicionario_de_dados.xlsx)</code>
 
 ### Scripts DDL Criação do Database:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>[Arquivo de criação do banco de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/createDatabase.sql)</code>
+<code>[Arquivo de criação do banco de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Cria%C3%A7%C3%A3oDB/createDatabase.sql)</code>
 
 ### Scripts Popula tabelas:
 Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
-<code>[Arquivo de insert das tabelas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/populaTabela.sql)</code>
+<code>[Arquivo de insert das tabelas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/PopulaTabelas/populaTabela.sql)</code>
 
 ### Objetos de BD (stored procedure, triggers e functions):
-<code>1 arquivo SQL por objeto</code>
+<code>[Pasta dos objetos](https://github.com/luigimilanez/Sistema-de-Conta-Digital/tree/main/Objetos)</code>
   
 ### Código do sistema:
 Linguagem de Programação: JavaScript, HTML e CSS<br>
