@@ -138,99 +138,109 @@ VALUES (1, 15, '4444222266661111', 'Wellington Trevoso', '2034-01-11', '8141')
 -- ************************************** [INSERTS Transacao]
   
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(1, 1, '2020-01-01', 'Depósito', 'Aprovado', 500);
+VALUES(1, 1, '2020-01-01 12:00:00', 'Deposito', 'Aprovado', 500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(2, 2, '2020-01-02', 'Depósito', 'Aprovado', 3000);
+VALUES(2, 2, '2020-01-02 13:00:00', 'Deposito', 'Aprovado', 3000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(3, 3, '2020-01-03', 'Depósito', 'Aprovado', 1100);
+VALUES(3, 3, '2020-01-03 14:00:00', 'Deposito', 'Aprovado', 1100);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(4, 4, '2020-01-04', 'Depósito', 'Aprovado', 100);
+VALUES(4, 4, '2020-01-04 12:30:00', 'Deposito', 'Aprovado', 100);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(5, 5, '2020-01-05', 'Depósito', 'Aprovado', 9000);
+VALUES(5, 5, '2020-01-05 11:20:00', 'Deposito', 'Aprovado', 9000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(6, 6, '2020-01-06', 'Depósito', 'Aprovado', 89000);
+VALUES(6, 6, '2020-01-06 12:45:00', 'Deposito', 'Aprovado', 89000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(7, 7, '2020-01-07', 'Depósito', 'Aprovado', 300);
+VALUES(7, 7, '2020-01-07 09:33:00', 'Deposito', 'Aprovado', 300);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(8, 8, '2020-01-08', 'Depósito', 'Aprovado', 150000);
+VALUES(8, 8, '2020-01-08 15:15:00', 'Deposito', 'Aprovado', 150000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(9, 9, '2020-01-09', 'Depósito', 'Aprovado', 15000);
+VALUES(9, 9, '2020-01-09 12:00:00', 'Deposito', 'Aprovado', 15000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(10, 10, '2020-01-10', 'Depósito', 'Aprovado', 58000);
+VALUES(10, 10, '2020-01-10 11:35:00', 'Deposito', 'Aprovado', 58000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(11, 11, '2020-01-11', 'Depósito', 'Aprovado', 500);
+VALUES(11, 11, '2020-01-11 16:20:00', 'Deposito', 'Aprovado', 500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(12, 12, '2020-01-12', 'Depósito', 'Aprovado', 200000);
+VALUES(12, 12, '2020-01-12 16:00:00', 'Deposito', 'Aprovado', 200000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(13, 13, '2020-01-13', 'Depósito', 'Aprovado', 45000);
+VALUES(13, 13, '2020-01-13 15:10:00', 'Deposito', 'Aprovado', 45000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(14, 14, '2020-01-14', 'Depósito', 'Aprovado', 500);
+VALUES(14, 14, '2020-01-14 15:18:00', 'Deposito', 'Aprovado', 500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(15, 15, '2020-01-20', 'Depósito', 'Aprovado', 500);
+VALUES(15, 15, '2020-01-20 14:53:00', 'Deposito', 'Aprovado', 500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(1, 11, '2022-10-10', 'PIX', 'Aprovado', 1000);
+VALUES(1, 11, '2022-10-10 10:45:00', 'PIX', 'Aprovado', 1000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(11, 7, '2022-10-11', 'PIX', 'Aprovado', 15000);
+VALUES(11, 7, '2022-10-11 11:50:00', 'PIX', 'Aprovado', 15000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(13, 4, '2022-10-12', 'PIX', 'Aprovado', 1000);
+VALUES(13, 4, '2022-10-12 11:12:00', 'PIX', 'Aprovado', 1000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(14, 11, '2022-10-13', 'PIX', 'Aprovado', 400);
+VALUES(14, 11, '2022-10-13 14:14:00', 'PIX', 'Aprovado', 400);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(1, 11, '2022-10-14', 'Debito', 'Aprovado', 50);
+VALUES(1, 11, '2022-10-14 09:00:00', 'Debito', 'Aprovado', 50);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(7, 7, '2022-11-15', 'Deposito', 'Negado', 3000);
+VALUES(7, 7, '2022-11-15 09:10:00', 'Deposito', 'Negado', 3000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(8, 8, '2022-11-16', 'Deposito', 'Aprovado', 2200);
+VALUES(8, 8, '2022-11-16 08:15:00', 'Deposito', 'Aprovado', 2200);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(13, 13, '2022-11-17', 'Credito', 'Aprovado', 150);
+VALUES(13, 13, '2022-11-17 08:44:00', 'Credito', 'Aprovado', 150);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(11, 11, '2022-11-18', 'Credito', 'Aprovado', 3300);
+VALUES(11, 11, '2022-11-18 13:45:00', 'Credito', 'Aprovado', 3300);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(1, 11, '2022-11-19', 'Debito', 'Aprovado', 1000);
+VALUES(1, 11, '2022-11-19 15:31:00', 'Debito', 'Aprovado', 1000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(7, 3, '2022-12-20', 'Debito', 'Negado', 10000);
+VALUES(7, 3, '2022-12-20 10:30:00', 'Debito', 'Negado', 10000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(11, 12, '2022-12-21', 'Debito', 'Aprovado', 9000);
+VALUES(11, 12, '2022-12-21 10:01:00', 'Debito', 'Aprovado', 9000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(6, 7, '2022-12-22', 'Debito', 'Aprovado', 200);
+VALUES(6, 7, '2022-12-22 09:55:00', 'Debito', 'Aprovado', 200);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(15, 7, '2022-12-23', 'Debito', 'Negado', 1000);
+VALUES(15, 7, '2022-12-23 14:37:00', 'Debito', 'Negado', 1000);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(4, 4, '2022-12-02', 'Debito', 'Aprovado', 1500);
+VALUES(4, 4, '2022-12-02 16:48:00', 'Debito', 'Aprovado', 1500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(2, 4, '2023-01-03', 'Credito', 'Aprovado', 800);
+VALUES(2, 4, '2023-01-03 12:51:00', 'Credito', 'Aprovado', 800);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(6, 10, '2023-01-04', 'Credito', 'Aprovado', 750);
+VALUES(6, 10, '2023-01-04 08:06:00', 'Credito', 'Aprovado', 750);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(10, 11, '2023-01-05', 'Credito', 'Aprovado', 500);
+VALUES(10, 11, '2023-01-05 12:15:00', 'Credito', 'Aprovado', 500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(15, 2, '2023-01-06', 'Credito', 'Aprovado', 3500);
+VALUES(15, 2, '2023-01-06 10:30:00', 'Credito', 'Aprovado', 3500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(14, 4, '2023-01-07', 'Credito', 'Aprovado', 230);
+VALUES(14, 4, '2023-01-07 09:30:00', 'Credito', 'Aprovado', 230);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(4, 4, '2023-01-06', 'Credito', 'Aprovado', 4500);
+VALUES(4, 4, '2023-01-06 09:09:00', 'Credito', 'Aprovado', 4500);
 INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
-VALUES(15, 10, '2021-01-07', 'Credito', 'Negado', 230);
+VALUES(15, 10, '2021-01-07 15:40:00', 'Credito', 'Negado', 230);
+INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
+VALUES(2, 3, '2020-04-07 16:10:00', 'Transferencia', 'Negado', 330);
+INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
+VALUES(12, 10, '2020-04-07 09:15:00', 'Transferencia', 'Aprovado', 420);
+INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
+VALUES(8, 15, '2020-04-07 10:15:00', 'Transferencia', 'Aprovado', 130);
+INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
+VALUES(14, 15, '2020-04-07 16:50:00', 'Transferencia', 'Aprovado', 730);
+INSERT INTO Transacao (id_conta, id_cliente, data, tp_trans, status, valor)
+VALUES(5, 11, '2020-04-07 16:50:00', 'Transferencia', 'Negado', 1030);
 
 -- ************************************** [INSERTS Fatura]
 
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (0, 7, 6, 150, 0, '2022-04-21')
+VALUES (0, 7, 6, 150, 0, '2022-04-21 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 8, 1, 4000, 0, '2022-04-22')
+VALUES (1, 8, 1, 4000, 0, '2022-04-22 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (0, 16, 2, 1500, 0, '2022-05-21')
+VALUES (0, 16, 2, 1500, 0, '2022-05-21 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 17, 6, 800, 0, '2022-06-24')
+VALUES (1, 17, 6, 800, 0, '2022-06-24 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 18, 10, 750, 0, '2022-06-24')
+VALUES (1, 18, 10, 750, 0, '2022-06-24 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 19, 15, 500, 0, '2022-07-20')
+VALUES (1, 19, 15, 500, 0, '2022-07-20 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 20, 14, 3500, 0, '2022-08-23')
+VALUES (1, 20, 14, 3500, 0, '2022-08-23 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (1, 21, 6, 230, 0, '2022-12-15')
+VALUES (1, 21, 6, 230, 0, '2022-12-15 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (0, 3, 6, 1000, 0, '2021-11-24')
+VALUES (0, 3, 6, 1000, 0, '2021-11-24 00:00:00')
 INSERT INTO Fatura (ativo, id_trans, id_conta, valor, valor_emprest, dt_venc)
-VALUES (0, 4, 6, 150, 0, '2021-06-15')
+VALUES (0, 4, 6, 150, 0, '2021-06-15 00:00:00')
