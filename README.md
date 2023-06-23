@@ -31,5 +31,8 @@ Banco de dados utilizado SQL Server versão 2022 - Azure.<br>
 <code>[Pasta dos objetos](https://github.com/luigimilanez/Sistema-de-Conta-Digital/tree/main/Objetos)</code>
   
 ### Código do sistema:
-Linguagem de Programação: JavaScript, HTML e CSS<br>
-<code>código fonte da aplicação</code>
+Linguagem de Programação / Ferramentas: <br>
+<code>[SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)</code>
+<code>[SQL Server Management](https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms)</code>
+<code>[Python](https://www.python.org/downloads/)</code>
+<code>[FRAMEWORK_DO_PYTHON(inserir)](https://github.com/luigimilanez/Sistema-de-Conta-Digital/)</code>
