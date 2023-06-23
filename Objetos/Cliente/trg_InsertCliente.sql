@@ -1,10 +1,10 @@
--- Trigger para criação de contas via tabela Cliente
+-- Trigger para criaÃ§Ã£o de contas via tabela Cliente
 CREATE OR ALTER TRIGGER trg_InsertCliente
 ON [Cliente]
 AFTER INSERT
 AS
 BEGIN
-    SET NOCOUNT ON;  -- é usada em uma instrução SQL no SQL Server para controlar se o contador de linhas (row count) é
+    SET NOCOUNT ON;  -- Ã© usada em uma instruÃ§Ã£o SQL no SQL Server para controlar se o contador de linhas (row count) Ã©
 					 -- retornado como parte do resultado da consulta. 
 
     DECLARE @IdCliente INT, 
@@ -21,7 +21,7 @@ BEGIN
     DECLARE @Idade INT;
     SET @Idade = DATEDIFF(YEAR, @DataNascimento, GETDATE());
 
-    -- Define o limite de crédito e limite de empréstimo com base na idade
+    -- Define o limite de crÃ©dito e limite de emprÃ©stimo com base na idade
     IF @Idade < 25
     BEGIN
         SET @LimiteCredito = 2500.00;
@@ -42,7 +42,7 @@ BEGIN
 	END
 
     -- Insere um novo registro na tabela Conta
-    INSERT INTO [Conta] (id_cliente, tp_conta, saldo_real, lim_credito, lim_emprest)
-    VALUES (@IdCliente, @TipoConta, 0.00, @LimiteCredito, @LimiteEmprestimo);
+    INSERT INTO [Conta] (id_cliente, tp_conta, saldo_real, saldo_dolar, saldo_euro, lim_credito, lim_emprest)
+    VALUES (@IdCliente, @TipoConta, 0.00, 0.00, 0.00, @LimiteCredito, @LimiteEmprestimo);
 END;
 GO
