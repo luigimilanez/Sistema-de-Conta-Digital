@@ -14,7 +14,7 @@
 
 
 ### Modelo Físico:
-![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/69534716/892597fb-ea7c-4657-8b0e-0a019427a3b7)
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/207b4d7b-99f6-46fa-8966-0a55b52a3d94)
 
 ### Dicionário de Dados:
 <code>[Arquivo de dicionário de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Dicion%C3%A1rio/Dicionario_de_dados.xlsx)</code>
@@ -35,4 +35,4 @@ Linguagem de Programação / Ferramentas: <br>
 <code>[SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)</code>
 <code>[SQL Server Management](https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms)</code>
 <code>[Python](https://www.python.org/downloads/)</code>
-<code>[FRAMEWORK_DO_PYTHON(inserir)](https://github.com/luigimilanez/Sistema-de-Conta-Digital/)</code>
+<code>[PyQt5](https://pypi.org/project/PyQt5/#:~:text=PyQt5%20is%20a%20comprehensive%20set,platforms%20including%20iOS%20and%20Android.)</code>
