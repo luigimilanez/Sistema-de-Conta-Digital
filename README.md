@@ -14,7 +14,7 @@
 
 
 ### Modelo Físico:
-![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/207b4d7b-99f6-46fa-8966-0a55b52a3d94)
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/5a908d3e-0328-4771-94dc-84387276169b)
 
 ### Dicionário de Dados:
 <code>[Arquivo de dicionário de dados](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Dicion%C3%A1rio/Dicionario_de_dados.xlsx)</code>
