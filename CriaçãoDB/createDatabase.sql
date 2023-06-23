@@ -142,7 +142,7 @@ CREATE TABLE [Fatura]
  [id_conta]      int NOT NULL ,
  [valor]         numeric(14,2) NOT NULL ,
  [valor_emprest] numeric(14,2) NOT NULL ,
- [dt_venc]       date NOT NULL ,
+ [dt_venc]       datetime NOT NULL ,
 
 
  CONSTRAINT [pk_Fatura] PRIMARY KEY CLUSTERED ([id_fatura] ASC),
