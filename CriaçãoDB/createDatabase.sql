@@ -28,8 +28,8 @@ CREATE TABLE [Conta]
  [id_cliente]  int NOT NULL ,
  [tp_conta]    varchar(64) NOT NULL ,
  [saldo_real]  numeric(14,2) NOT NULL ,
- [saldo_dolar] numeric(14,2) NULL ,
- [saldo_euro]  numeric(14,2) NULL ,
+ [saldo_dolar] numeric(14,2) NOT NULL ,
+ [saldo_euro]  numeric(14,2) NOT NULL ,
  [lim_credito] numeric(14,2) NOT NULL ,
  [lim_emprest] numeric(14,2) NOT NULL ,
 
@@ -80,9 +80,10 @@ GO
 CREATE TABLE [Emprestimo]
 (
  [id_emprest]       int identity ,
+ [ativo]            bit NOT NULL ,
  [id_conta]         int NOT NULL ,
  [valor_emprest]    numeric(14,2) NOT NULL ,
- [taxa_juros]       tinyint NOT NULL ,
+ [taxa_juros]       numeric(14,2) NOT NULL ,
  [data_contratacao] date NOT NULL ,
  [data_venc]        date NOT NULL ,
  [saldo_devedor]    numeric(14,2) NOT NULL ,
@@ -139,8 +140,8 @@ CREATE TABLE [Fatura]
  [ativo]         bit NOT NULL ,
  [id_trans]      int NOT NULL ,
  [id_conta]      int NOT NULL ,
- [valor]         numeric(14,2) NULL ,
- [valor_emprest] numeric(14,2) NULL ,
+ [valor]         numeric(14,2) NOT NULL ,
+ [valor_emprest] numeric(14,2) NOT NULL ,
  [dt_venc]       date NOT NULL ,
 
 
