@@ -122,7 +122,7 @@ CREATE TABLE [Transacao]
  [id_cliente] int NOT NULL ,
  [data]       datetime NOT NULL ,
  [tp_trans]   varchar(64) NOT NULL ,
- [status]     varchar(40) NOT NULL ,
+ [status]     varchar(40) NULL ,
  [valor]      numeric(14,2) NOT NULL ,
 
 
@@ -138,7 +138,6 @@ CREATE TABLE [Fatura]
 (
  [id_fatura]     int identity ,
  [ativo]         bit NOT NULL ,
- [id_trans]      int NOT NULL ,
  [id_conta]      int NOT NULL ,
  [valor]         numeric(14,2) NOT NULL ,
  [valor_emprest] numeric(14,2) NOT NULL ,
@@ -147,6 +146,5 @@ CREATE TABLE [Fatura]
 
  CONSTRAINT [pk_Fatura] PRIMARY KEY CLUSTERED ([id_fatura] ASC),
  CONSTRAINT [fk_Conta__Fatura] FOREIGN KEY ([id_conta])  REFERENCES [Conta]([id_conta]),
- CONSTRAINT [fk_Transacao__Fatura] FOREIGN KEY ([id_trans])  REFERENCES [Transacao]([id_trans])
 );
 GO
