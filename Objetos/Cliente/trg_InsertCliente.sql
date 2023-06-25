@@ -1,8 +1,5 @@
 -- Trigger para criação de contas via tabela Cliente
-CREATE OR ALTER TRIGGER trg_InsertCliente
-ON [Cliente]
-AFTER INSERT
-AS
+CREATE OR ALTER TRIGGER trg_InsertCliente ON [Cliente] AFTER INSERT AS
 BEGIN
     SET NOCOUNT ON;  -- é usada em uma instrução SQL no SQL Server para controlar se o contador de linhas (row count) é
 					 -- retornado como parte do resultado da consulta. 

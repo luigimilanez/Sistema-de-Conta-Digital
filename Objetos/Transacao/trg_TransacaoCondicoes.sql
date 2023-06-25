@@ -137,7 +137,7 @@ BEGIN
         BEGIN
             -- Criar nova fatura com o valor da transação
             INSERT INTO Fatura (ativo, id_conta, valor, valor_emprest, dt_venc)
-            VALUES (1, @IdContaPagador, @ValorTransacao, 0, GETDATE());
+            VALUES (1, @IdContaPagador, @ValorTransacao, 0, DATEADD(minute, 3, GETDATE()));
         END;
     END;
 END;

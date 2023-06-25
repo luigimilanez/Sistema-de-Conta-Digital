@@ -49,7 +49,7 @@ CREATE TABLE [Cambio]
  [moeda_dest]   varchar(10) NOT NULL ,
  [valor_origem] numeric(14,2) NOT NULL ,
  [valor_dest]   numeric(14,2) NOT NULL ,
- [dt_cambio]    date NOT NULL ,
+ [dt_cambio]    datetime NOT NULL ,
 
 
  CONSTRAINT [pk_Cambio] PRIMARY KEY CLUSTERED ([id_cambio] ASC),
@@ -67,7 +67,7 @@ CREATE TABLE [Investimento]
  [tp_investimento] varchar(64) NOT NULL ,
  [vlr_investido]   numeric(14,2) NOT NULL ,
  [vlr_rendimento]  numeric(14,2) NULL ,
- [dt_aplicacao]    date NOT NULL ,
+ [dt_aplicacao]    datetime NOT NULL ,
 
 
  CONSTRAINT [pk_Investimento] PRIMARY KEY CLUSTERED ([id_invest] ASC),
@@ -84,13 +84,27 @@ CREATE TABLE [Emprestimo]
  [id_conta]         int NOT NULL ,
  [valor_emprest]    numeric(14,2) NOT NULL ,
  [taxa_juros]       numeric(14,2) NOT NULL ,
- [data_contratacao] date NOT NULL ,
- [data_venc]        date NOT NULL ,
+ [data_contratacao] datetime NOT NULL ,
+ [data_venc]        datetime NOT NULL ,
  [saldo_devedor]    numeric(14,2) NOT NULL ,
 
 
  CONSTRAINT [pk_Emprestimo] PRIMARY KEY CLUSTERED ([id_emprest] ASC),
  CONSTRAINT [fk_Conta__Emprestimo] FOREIGN KEY ([id_conta])  REFERENCES [Conta]([id_conta])
+);
+GO
+
+
+-- ************************************** [Emprestimodesativado]
+CREATE TABLE [Emprestimodesativado]
+(
+ [id_empdesat] int IDENTITY ,
+ [id_emprest]  int NOT NULL ,
+
+
+ CONSTRAINT [pk_Emprestimodesativado] PRIMARY KEY CLUSTERED ([id_empdesat] ASC),
+ CONSTRAINT [idx_id_emprest] UNIQUE NONCLUSTERED ([id_emprest] ASC),
+ CONSTRAINT [fk_Emprestimo__Emprestimodesativado] FOREIGN KEY ([id_emprest])  REFERENCES [Emprestimo]([id_emprest])
 );
 GO
 
@@ -146,5 +160,19 @@ CREATE TABLE [Fatura]
 
  CONSTRAINT [pk_Fatura] PRIMARY KEY CLUSTERED ([id_fatura] ASC),
  CONSTRAINT [fk_Conta__Fatura] FOREIGN KEY ([id_conta])  REFERENCES [Conta]([id_conta]),
+);
+GO
+
+
+-- ************************************** [Faturadesativada]
+CREATE TABLE [Faturadesativada]
+(
+ [id_fatdesat] int IDENTITY ,
+ [id_fatura]   int NOT NULL ,
+
+
+ CONSTRAINT [pk_Faturadesativada] PRIMARY KEY CLUSTERED ([id_fatdesat] ASC),
+ CONSTRAINT [idx_fatura] UNIQUE NONCLUSTERED ([id_fatura] ASC),
+ CONSTRAINT [fk_Fatura__Faturadesativada] FOREIGN KEY ([id_fatura])  REFERENCES [Fatura]([id_fatura])
 );
 GO
