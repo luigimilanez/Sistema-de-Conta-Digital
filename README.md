@@ -36,9 +36,10 @@ Linguagem de Programação / Ferramentas: <br>
 <code>[SQL Server Management](https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms)</code>
 <code>[Python](https://www.python.org/downloads/)</code>
 <code>[PyQt5](https://pypi.org/project/PyQt5/#:~:text=PyQt5%20is%20a%20comprehensive%20set,platforms%20including%20iOS%20and%20Android.)</code>
+<code>[pyodbc](https://pypi.org/project/pyodbc/)</code>
 
 ### Questões de Regras de Negócios:
-01 - Qual seria o número de cadastros atualmente no banco de dados ativos e inativos?
-02 - Qual é número de transações diária efetuada pelos clientes?
-03 - Qual o valor total movimentado anualmente pelos clientes?
+01 - Qual seria o número de cadastros atualmente no banco de dados ativos e inativos?<br>
+02 - Qual é número de transações diária efetuada pelos clientes?<br>
+03 - Qual o valor total movimentado anualmente pelos clientes?<br>
 04 - Qual o valor total arrecadado mensalmente com o câmbio de moeda?
