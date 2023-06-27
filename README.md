@@ -39,7 +39,7 @@ Linguagem de Programação / Ferramentas: <br>
 <code>[pyodbc](https://pypi.org/project/pyodbc/)</code>
 
 ### Questões de Regras de Negócios:
-<code>[Arquivo com as Consultas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Consultas/RegrasDeNegocio)</code>
+<code>[Arquivo com as Consultas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Consultas/RegrasDeNegocio)</code> <br>
 01 - Qual seria o número de cadastros atualmente no banco de dados ativos e inativos?<br>
 02 - Qual é número de transações diária efetuada pelos clientes?<br>
 03 - Qual o valor total movimentado anualmente pelos clientes?<br>
