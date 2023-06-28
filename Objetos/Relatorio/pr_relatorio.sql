@@ -17,6 +17,7 @@ CREATE or ALTER PROCEDURE pr_relatorio(@tipo       TINYINT       ,
 				       @id_cliente INT     = null,
 				       @tp_conta   VARCHAR(16) = null) AS
 BEGIN
+	/*=== Transações ===*/
 	IF @tipo = 1
 	BEGIN
 		select cl.id_cliente                as 'ID', 
@@ -41,7 +42,7 @@ BEGIN
 
 	IF @tipo = 2
 	BEGIN
-
+		/*=== Empréstimos ===*/
 		select em.id_conta                              as 'ID',
 		       cl.nome                                  as 'Nome',
 		       co.tp_conta                              as 'Tp Conta',
@@ -62,6 +63,7 @@ BEGIN
 
 	IF @tipo = 3
 	BEGIN
+		/*=== Fatura ===*/
 		select fa.id_conta                              as 'ID',
 		       cl.nome                                  as 'Nome',
 		       co.tp_conta                              as 'Tp Conta',
@@ -77,6 +79,7 @@ BEGIN
 
 	IF @tipo = 4
 	BEGIN
+		/*=== Investimentos ===*/
 		select inv.id_conta                          as 'ID',
 		       cl.nome                               as 'Nome',
 		       co.tp_conta                           as 'Tp Conta',
