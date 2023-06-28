@@ -14,6 +14,7 @@
 
 
 ### Modelo Físico:
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/ebc07756-5a1a-435e-813f-a218505f8a23)
 ![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/727f057a-871f-4af1-a3da-5dfb84f7086e)
 
 ### Dicionário de Dados:
@@ -39,8 +40,8 @@ Linguagem de Programação / Ferramentas: <br>
 <code>[pyodbc](https://pypi.org/project/pyodbc/)</code>
 
 ### Questões de Regras de Negócios:
-<code>[Arquivo com as Consultas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Consultas/RegrasDeNegocio)</code> <br>
 01 - Qual seria o número de cadastros atualmente no banco de dados ativos e inativos?<br>
 02 - Qual é número de transações diária efetuada pelos clientes?<br>
 03 - Qual o valor total movimentado anualmente pelos clientes?<br>
-04 - Qual o valor total arrecadado mensalmente com o câmbio de moeda?
+04 - Qual o valor total arrecadado mensalmente com o câmbio de moeda? <br><br>
+<code>[Arquivo com as Consultas](https://github.com/luigimilanez/Sistema-de-Conta-Digital/blob/main/Consultas/RegrasDeNegocio)</code>
