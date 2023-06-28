@@ -176,3 +176,70 @@ CREATE TABLE [Faturadesativada]
  CONSTRAINT [fk_Fatura__Faturadesativada] FOREIGN KEY ([id_fatura])  REFERENCES [Fatura]([id_fatura])
 );
 GO
+
+
+-- ************************************** [log_cliente_deletado]
+CREATE TABLE [log_cliente_deletado]
+(
+ [id_log]               int identity ,
+ [id_cliente]           int NOT NULL ,
+ [ativo]                bit NOT NULL ,
+ [nome]                 varchar(100) NOT NULL ,
+ [cpf]                  varchar(18) NOT NULL ,
+ [data_nasc]            date NOT NULL ,
+ [phone]                varchar(20) NOT NULL ,
+ [endereco]             varchar(max) NOT NULL ,
+ [email]                varchar(100) NOT NULL ,
+ [senha]                varchar(64) NOT NULL ,
+ [dt_criacao]           datetime NOT NULL ,
+ [id_conta]             int NOT NULL ,
+ [tp_conta]             varchar(64) NOT NULL ,
+ [saldo_real]           numeric(14,2) NOT NULL ,
+ [saldo_dolar]          numeric(14,2) NOT NULL ,
+ [saldo_euro]           numeric(14,2) NOT NULL ,
+ [lim_credito]          numeric(14,2) NOT NULL ,
+ [lim_emprest]          numeric(14,2) NOT NULL ,
+ [id_cambio]            int NULL ,
+ [moeda_origem]         varchar(10) NULL ,
+ [moeda_dest]           varchar(10) NULL ,
+ [valor_origem]         numeric(14,2) NULL ,
+ [valor_dest]           numeric(14,2) NULL ,
+ [dt_cambio]            datetime NULL ,
+ [id_invest]            int NULL ,
+ [ativo_invest]         bit NULL ,
+ [tp_investimento]      varchar(64) NULL ,
+ [vlr_investido]        numeric(14,2) NULL ,
+ [vlr_rendimento]       numeric(14,2) NULL ,
+ [dt_aplicacao]         datetime NULL ,
+ [id_emprest]           int NULL ,
+ [ativo_emprest]        bit NULL ,
+ [valor_emprest]        numeric(14,2) NULL ,
+ [taxa_juros]           numeric(14,2) NULL ,
+ [data_contratacao]     datetime NULL ,
+ [data_venc]            datetime NULL ,
+ [saldo_devedor]        numeric(14,2) NULL ,
+ [id_empdesat]          int NULL ,
+ [id_fatura]            int NULL ,
+ [ativo_fatura]         bit NULL ,
+ [valor_fatura]         numeric(14,2) NULL ,
+ [valor_emprest_fatura] numeric(14,2) NULL ,
+ [dt_venc]              datetime NULL ,
+ [id_fatdesat]          int NULL ,
+ [id_cartao]            int NULL ,
+ [ativo_cartao]         bit NULL ,
+ [numero]               varchar(100) NULL ,
+ [titular]              varchar(100) NULL ,
+ [dt_validade]          date NULL ,
+ [code_sec]             varchar(4) NULL ,
+ [id_trans]             int NULL ,
+ [id_cliente_trans]     int NULL ,
+ [id_conta_trans]       int NULL ,
+ [data_trans]           datetime NULL ,
+ [tp_trans]             varchar(64) NULL ,
+ [status]               varchar(40) NULL ,
+ [data_log_delete]      datetime NOT NULL ,
+
+
+ CONSTRAINT [pk_log_cliente_deletado] PRIMARY KEY CLUSTERED ([id_log] ASC)
+);
+GO
