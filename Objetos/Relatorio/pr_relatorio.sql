@@ -96,5 +96,3 @@ BEGIN
 		AND co.tp_conta = isnull(@tp_conta,co.tp_conta);
 	END
 END
-
-exec pr_relatorio 1, '2010-01-01', '2030-01-06'
