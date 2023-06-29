@@ -39,6 +39,8 @@ Linguagem de Programação / Ferramentas: <br>
 <code>[PyQt5](https://pypi.org/project/PyQt5/#:~:text=PyQt5%20is%20a%20comprehensive%20set,platforms%20including%20iOS%20and%20Android.)</code>
 <code>[pyodbc](https://pypi.org/project/pyodbc/)</code>
 
+![fetchdemo](https://github.com/luigimilanez/Sistema-de-Conta-Digital/assets/89088603/ff556fa6-fe7b-4c44-bb7d-bfbac8f18ff3)
+
 ### Questões de Regras de Negócios:
 01 - Qual seria o número de cadastros atualmente no banco de dados ativos e inativos?<br>
 02 - Qual é número de transações diária efetuada pelos clientes?<br>
