@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Inserir dados</string>
+   <string>Atualizar dados</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">

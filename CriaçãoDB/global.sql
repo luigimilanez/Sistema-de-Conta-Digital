@@ -1,5 +1,18 @@
 -- Arquivo de geracao global
 
+-- ************************************** DELETA TABELAS
+drop table Cambio
+drop table Cartao
+drop table Investimento
+drop table Transacao
+drop table Emprestimodesativado
+drop table Emprestimo
+drop table Faturadesativada
+drop table Fatura
+drop table log_cliente_deletado
+drop table Conta
+drop table Cliente
+
 -- ************************************** [Cliente]
 CREATE TABLE [Cliente]
 (
@@ -442,7 +455,7 @@ BEGIN
 END
 
 
--- Trigger da tabela Investimento
+-- Trigger da tabela investimento
 CREATE OR ALTER TRIGGER trg_Investimento ON [Investimento] AFTER UPDATE, INSERT AS
 BEGIN
     SET NOCOUNT ON;
@@ -512,8 +525,8 @@ BEGIN
     UPDATE i
     SET i.vlr_rendimento = 
         CASE
-            WHEN i.tp_investimento IN ('LCI', 'LCA', 'Renda fixa') THEN i.vlr_investido + i.vlr_investido * POWER((1 + @jurosmenor / 100), DATEDIFF(MINUTE, @dt_aplicacao, GETDATE()))
-            WHEN i.tp_investimento = 'Tesouro direto' THEN i.vlr_investido + i.vlr_investido * POWER((1 + @jurosmaior / 100), DATEDIFF(MINUTE, @dt_aplicacao, GETDATE()))
+            WHEN i.tp_investimento IN ('LCI', 'LCA', 'Renda fixa') THEN i.vlr_investido * POWER((1 + @jurosmenor / 100), DATEDIFF(MINUTE, @dt_aplicacao, GETDATE()))
+            WHEN i.tp_investimento = 'Tesouro direto' THEN i.vlr_investido * POWER((1 + @jurosmaior / 100), DATEDIFF(MINUTE, @dt_aplicacao, GETDATE()))
             ELSE i.vlr_rendimento
         END
     FROM [Investimento] i
