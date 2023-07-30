@@ -1,4 +1,4 @@
--- Arquivo de geracao global
+ï»¿-- Arquivo de geracao global
 
 -- ************************************** DELETA TABELAS
 drop table Cambio
@@ -196,63 +196,8 @@ GO
 -- ************************************** [log_cliente_deletado]
 CREATE TABLE [log_cliente_deletado]
 (
- [id_log]               int identity ,
- [id_cliente]           int NOT NULL ,
- [ativo]                bit NOT NULL ,
- [nome]                 varchar(100) NOT NULL ,
- [cpf]                  varchar(18) NOT NULL ,
- [data_nasc]            date NOT NULL ,
- [phone]                varchar(20) NOT NULL ,
- [endereco]             varchar(max) NOT NULL ,
- [email]                varchar(100) NOT NULL ,
- [senha]                varchar(64) NOT NULL ,
- [dt_criacao]           datetime NOT NULL ,
- [id_conta]             int NOT NULL ,
- [tp_conta]             varchar(64) NOT NULL ,
- [saldo_real]           numeric(14,2) NOT NULL ,
- [saldo_dolar]          numeric(14,2) NOT NULL ,
- [saldo_euro]           numeric(14,2) NOT NULL ,
- [lim_credito]          numeric(14,2) NOT NULL ,
- [lim_emprest]          numeric(14,2) NOT NULL ,
- [id_cambio]            int NULL ,
- [moeda_origem]         varchar(10) NULL ,
- [moeda_dest]           varchar(10) NULL ,
- [valor_origem]         numeric(14,2) NULL ,
- [valor_dest]           numeric(14,2) NULL ,
- [dt_cambio]            datetime NULL ,
- [id_invest]            int NULL ,
- [ativo_invest]         bit NULL ,
- [tp_investimento]      varchar(64) NULL ,
- [vlr_investido]        numeric(14,2) NULL ,
- [vlr_rendimento]       numeric(14,2) NULL ,
- [dt_aplicacao]         datetime NULL ,
- [id_emprest]           int NULL ,
- [ativo_emprest]        bit NULL ,
- [valor_emprest]        numeric(14,2) NULL ,
- [taxa_juros]           numeric(14,2) NULL ,
- [data_contratacao]     datetime NULL ,
- [data_venc]            datetime NULL ,
- [saldo_devedor]        numeric(14,2) NULL ,
- [id_empdesat]          int NULL ,
- [id_fatura]            int NULL ,
- [ativo_fatura]         bit NULL ,
- [valor_fatura]         numeric(14,2) NULL ,
- [valor_emprest_fatura] numeric(14,2) NULL ,
- [dt_venc]              datetime NULL ,
- [id_fatdesat]          int NULL ,
- [id_cartao]            int NULL ,
- [ativo_cartao]         bit NULL ,
- [numero]               varchar(100) NULL ,
- [titular]              varchar(100) NULL ,
- [dt_validade]          date NULL ,
- [code_sec]             varchar(4) NULL ,
- [id_trans]             int NULL ,
- [id_cliente_trans]     int NULL ,
- [id_conta_trans]       int NULL ,
- [data_trans]           datetime NULL ,
- [tp_trans]             varchar(64) NULL ,
- [status]               varchar(40) NULL ,
- [data_log_delete]      datetime NOT NULL ,
+ [id_log]       int IDENTITY ,
+ [regist_delet] varchar(max) NOT NULL ,
 
 
  CONSTRAINT [pk_log_cliente_deletado] PRIMARY KEY CLUSTERED ([id_log] ASC)
@@ -260,10 +205,10 @@ CREATE TABLE [log_cliente_deletado]
 GO
 
 
--- Trigger para criação de contas via tabela Cliente
+-- Trigger para criaï¿½ï¿½o de contas via tabela Cliente
 CREATE OR ALTER TRIGGER trg_InsertCliente ON [Cliente] AFTER INSERT AS
 BEGIN
-    SET NOCOUNT ON;  -- é usada em uma instrução SQL no SQL Server para controlar se o contador de linhas (row count) é
+    SET NOCOUNT ON;  -- ï¿½ usada em uma instruï¿½ï¿½o SQL no SQL Server para controlar se o contador de linhas (row count) ï¿½
 					 -- retornado como parte do resultado da consulta. 
 
     DECLARE @IdCliente INT, 
@@ -280,7 +225,7 @@ BEGIN
     DECLARE @Idade INT;
     SET @Idade = DATEDIFF(YEAR, @DataNascimento, GETDATE());
 
-    -- Define o limite de crédito e limite de empréstimo com base na idade
+    -- Define o limite de crï¿½dito e limite de emprï¿½stimo com base na idade
     IF @Idade < 25
     BEGIN
         SET @LimiteCredito = 2500.00;
@@ -310,14 +255,14 @@ GO
 -- Trigger da tabela Cliente
 CREATE OR ALTER TRIGGER trg_DesativamentoConta ON [Cliente] FOR UPDATE, DELETE AS
 BEGIN
-    -- Verificar se houve alteração no status
+    -- Verificar se houve alteraï¿½ï¿½o no status
     IF UPDATE(ativo)
     BEGIN
         -- Verificar se existem faturas em aberto
         IF EXISTS (SELECT 1 FROM [Fatura] WHERE id_conta IN (SELECT id_conta FROM inserted) AND ativo = 1)
         BEGIN
-            -- Lançar erro e abortar a atualização
-            RAISERROR('Não é possível desativar o cliente devido a faturas em aberto.', 16, 1)
+            -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+            RAISERROR('Nï¿½o ï¿½ possï¿½vel desativar o cliente devido a faturas em aberto.', 16, 1)
             ROLLBACK TRANSACTION
             RETURN
         END
@@ -325,26 +270,26 @@ BEGIN
         -- Verificar se existem investimentos ativos
         IF EXISTS (SELECT 1 FROM [Investimento] WHERE id_conta IN (SELECT id_conta FROM inserted) AND ativo = 1)
         BEGIN
-            -- Lançar erro e abortar a atualização
-            RAISERROR('Não é possível desativar o cliente devido a investimentos ativos.', 16, 1)
+            -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+            RAISERROR('Nï¿½o ï¿½ possï¿½vel desativar o cliente devido a investimentos ativos.', 16, 1)
             ROLLBACK TRANSACTION
             RETURN
         END
         
-        -- Verificar se existem empréstimos ativos
+        -- Verificar se existem emprï¿½stimos ativos
         IF EXISTS (SELECT 1 FROM [Emprestimo] WHERE id_conta IN (SELECT id_conta FROM inserted) AND ativo = 1)
         BEGIN
-            -- Lançar erro e abortar a atualização
-            RAISERROR('Não é possível desativar o cliente devido a empréstimos ativos.', 16, 1)
+            -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+            RAISERROR('Nï¿½o ï¿½ possï¿½vel desativar o cliente devido a emprï¿½stimos ativos.', 16, 1)
             ROLLBACK TRANSACTION
             RETURN
         END
         
-        -- Verificar se existem cartões de crédito ativos
+        -- Verificar se existem cartï¿½es de crï¿½dito ativos
         IF EXISTS (SELECT 1 FROM [Cartao] WHERE id_conta IN (SELECT id_conta FROM inserted) AND ativo = 1)
         BEGIN
-            -- Lançar erro e abortar a atualização
-            RAISERROR('Não é possível desativar o cliente devido a cartões de crédito ativos.', 16, 1)
+            -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+            RAISERROR('Nï¿½o ï¿½ possï¿½vel desativar o cliente devido a cartï¿½es de crï¿½dito ativos.', 16, 1)
             ROLLBACK TRANSACTION
             RETURN
         END
@@ -355,11 +300,11 @@ END;
 -- Trigger tabela Cambio
 CREATE OR ALTER TRIGGER trg_CambioConversao ON [Cambio] AFTER INSERT AS
 BEGIN
-    -- Definir os valores das moedas em relação ao BRL
+    -- Definir os valores das moedas em relaï¿½ï¿½o ao BRL
     DECLARE @valor_dolar numeric(14,2) = 4.77
     DECLARE @valor_euro numeric(14,2) = 5.22
 
-    -- Variáveis para armazenar os valores da inserção
+    -- Variï¿½veis para armazenar os valores da inserï¿½ï¿½o
 	DECLARE @id_cambio int
     DECLARE @id_conta int
     DECLARE @moeda_origem varchar(10)
@@ -369,7 +314,7 @@ BEGIN
     DECLARE @id_cliente int
     DECLARE @ativo bit
 
-    -- Obter os valores da inserção
+    -- Obter os valores da inserï¿½ï¿½o
     SELECT
 	    @id_cambio = inserted.id_cambio,
         @id_conta = inserted.id_conta,
@@ -379,31 +324,31 @@ BEGIN
     FROM
         inserted
 
-    -- Obter o id_cliente associado à conta e verificar se a conta está ativa
+    -- Obter o id_cliente associado ï¿½ conta e verificar se a conta estï¿½ ativa
     SELECT @id_cliente = C.id_cliente, @ativo = C.ativo
     FROM [Conta] AS CO
     INNER JOIN [Cliente] AS C ON CO.id_cliente = C.id_cliente
     WHERE CO.id_conta = @id_conta
 
-    -- Verificar se a conta está desativada
+    -- Verificar se a conta estï¿½ desativada
     IF @ativo = 0
     BEGIN
-        RAISERROR('A conta está desativada. Não é possível realizar o câmbio.', 16, 1)
+        RAISERROR('A conta estï¿½ desativada. Nï¿½o ï¿½ possï¿½vel realizar o cï¿½mbio.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
 
-    -- Verificar se a conta possui saldo suficiente para a conversão
+    -- Verificar se a conta possui saldo suficiente para a conversï¿½o
     IF (@moeda_origem = 'BRL' AND @valor_origem > (SELECT saldo_real FROM [Conta] WHERE id_conta = @id_conta)) OR
        (@moeda_origem = 'USD' AND @valor_origem > (SELECT saldo_dolar FROM [Conta] WHERE id_conta = @id_conta)) OR
        (@moeda_origem = 'EUR' AND @valor_origem > (SELECT saldo_euro FROM [Conta] WHERE id_conta = @id_conta))
     BEGIN
-        RAISERROR('A conta não possui saldo suficiente para realizar o câmbio.', 16, 1)
+        RAISERROR('A conta nï¿½o possui saldo suficiente para realizar o cï¿½mbio.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
 
-    -- BRLizar a conversão de moeda
+    -- BRLizar a conversï¿½o de moeda
     IF @moeda_origem = 'BRL' AND @moeda_dest = 'USD'
 	BEGIN
         SET @valor_dest = @valor_origem / @valor_dolar
@@ -448,7 +393,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		RAISERROR('Moeda não reconhecida', 16, 1)
+		RAISERROR('Moeda nï¿½o reconhecida', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
 	END
@@ -460,7 +405,7 @@ CREATE OR ALTER TRIGGER trg_Investimento ON [Investimento] AFTER UPDATE, INSERT 
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verificar se a conta está ativa para realizar a operação
+    -- Verificar se a conta estï¿½ ativa para realizar a operaï¿½ï¿½o
     IF EXISTS (
         SELECT 1
         FROM [inserted] i
@@ -468,13 +413,13 @@ BEGIN
         WHERE i.ativo = 1 AND cl.ativo = 0
     )
     BEGIN
-        -- Lançar erro e abortar a atualização
-        RAISERROR('Não é possível realizar o investimento em uma conta desativada.', 16, 1)
+        -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+        RAISERROR('Nï¿½o ï¿½ possï¿½vel realizar o investimento em uma conta desativada.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
     
-    -- Verificar se o investimento está sendo desativado
+    -- Verificar se o investimento estï¿½ sendo desativado
     IF EXISTS (SELECT 1 FROM [inserted] WHERE ativo = 0)
     BEGIN
         -- Atualizar o saldo da conta com o valor rendido
@@ -488,7 +433,7 @@ BEGIN
         RETURN
     END
     
-    -- Verificar se há saldo suficiente para o investimento
+    -- Verificar se hï¿½ saldo suficiente para o investimento
     IF EXISTS (
         SELECT 1
         FROM [inserted] i
@@ -496,8 +441,8 @@ BEGIN
         WHERE i.ativo = 1 AND c.saldo_real < i.vlr_investido
     )
     BEGIN
-        -- Lançar erro e abortar a atualização
-        RAISERROR('Não há saldo suficiente na conta para realizar o investimento.', 16, 1)
+        -- Lanï¿½ar erro e abortar a atualizaï¿½ï¿½o
+        RAISERROR('Nï¿½o hï¿½ saldo suficiente na conta para realizar o investimento.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
@@ -521,7 +466,7 @@ BEGIN
     SET @jurosmenor = 2.5
     SET @jurosmaior = 5
 
-    -- Atualizar o valor_rendimento com base no tipo de investimento e diferença de datas
+    -- Atualizar o valor_rendimento com base no tipo de investimento e diferenï¿½a de datas
     UPDATE i
     SET i.vlr_rendimento = 
         CASE
@@ -538,7 +483,7 @@ END;
 -- Trigger da tabela Emprestimo
 CREATE OR ALTER TRIGGER trg_Emprestimo ON Emprestimo AFTER INSERT, UPDATE AS
 BEGIN
-    -- Verificar se a conta está ativa
+    -- Verificar se a conta estï¿½ ativa
     IF EXISTS (
         SELECT 1 FROM inserted i
         INNER JOIN Conta c ON i.id_conta = c.id_conta
@@ -546,36 +491,36 @@ BEGIN
         WHERE cl.ativo = 0
     )
     BEGIN
-        RAISERROR('A conta está inativa. Operação de empréstimo não permitida.', 16, 1)
+        RAISERROR('A conta estï¿½ inativa. Operaï¿½ï¿½o de emprï¿½stimo nï¿½o permitida.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
 
-    -- Verificar se há saldo no limite de empréstimo na conta do usuário
+    -- Verificar se hï¿½ saldo no limite de emprï¿½stimo na conta do usuï¿½rio
     IF EXISTS (
         SELECT 1 FROM inserted i
         INNER JOIN Conta c ON i.id_conta = c.id_conta
         WHERE c.lim_emprest < i.valor_emprest
     )
     BEGIN
-        RAISERROR('A conta não possui saldo suficiente no limite de empréstimo.', 16, 1)
+        RAISERROR('A conta nï¿½o possui saldo suficiente no limite de emprï¿½stimo.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
 
-    -- Verificar se o saldo_real da conta é maior ou igual a 0
+    -- Verificar se o saldo_real da conta ï¿½ maior ou igual a 0
     IF EXISTS (
         SELECT 1 FROM inserted i
         INNER JOIN Conta c ON i.id_conta = c.id_conta
         WHERE c.saldo_real < 0
     )
     BEGIN
-        RAISERROR('A conta possui saldo negativo. Operação de empréstimo não permitida.', 16, 1)
+        RAISERROR('A conta possui saldo negativo. Operaï¿½ï¿½o de emprï¿½stimo nï¿½o permitida.', 16, 1)
         ROLLBACK TRANSACTION
         RETURN
     END
 
-    -- Armazenar valores necessários em variáveis
+    -- Armazenar valores necessï¿½rios em variï¿½veis
     DECLARE @id_emprest int
     DECLARE @id_conta int
     DECLARE @valor_emprest numeric(14, 2)
@@ -588,7 +533,7 @@ BEGIN
            @data_venc = i.data_venc
     FROM inserted i
 
-    -- Calcular o saldo devedor considerando a taxa de juros e a diferença de minutos
+    -- Calcular o saldo devedor considerando a taxa de juros e a diferenï¿½a de minutos
     DECLARE @saldo_devedor numeric(14, 2)
     SET @saldo_devedor = @valor_emprest * POWER((1 + @taxa_juros / 100), DATEDIFF(MINUTE, GETDATE(), @data_venc))
 
@@ -598,25 +543,25 @@ BEGIN
     FROM Emprestimo e
     INNER JOIN inserted i ON e.id_emprest = i.id_emprest
 
-    -- Atualizar o limite de empréstimo na conta do usuário
+    -- Atualizar o limite de emprï¿½stimo na conta do usuï¿½rio
     UPDATE c
     SET c.lim_emprest = c.lim_emprest - @valor_emprest
     FROM Conta c
     INNER JOIN inserted i ON c.id_conta = i.id_conta
 
-    -- Desativar empréstimos vencidos
+    -- Desativar emprï¿½stimos vencidos
     UPDATE e
     SET e.ativo = 0
     FROM Emprestimo e
     WHERE e.data_venc < GETDATE()
 
-    -- Verificar se há empréstimos vencidos
+    -- Verificar se hï¿½ emprï¿½stimos vencidos
     IF EXISTS (
         SELECT 1 FROM Emprestimo
         WHERE data_venc < GETDATE()
     )
     BEGIN
-        -- Mover empréstimos vencidos para a tabela Emprestimodesativado (apenas se ainda não estiverem na tabela)
+        -- Mover emprï¿½stimos vencidos para a tabela Emprestimodesativado (apenas se ainda nï¿½o estiverem na tabela)
         INSERT INTO Emprestimodesativado (id_emprest)
         SELECT e.id_emprest
         FROM Emprestimo e
@@ -632,27 +577,27 @@ CREATE OR ALTER TRIGGER trg_Emprestimodesativado ON Emprestimodesativado AFTER I
 BEGIN
     SET NOCOUNT ON;
 
-    -- Variáveis
+    -- Variï¿½veis
     DECLARE @id_emprest INT;
     DECLARE @id_conta INT;
     DECLARE @saldo_devedor NUMERIC(14, 2);
 
-    -- Obter os valores relevantes do empréstimo desativado inserido
+    -- Obter os valores relevantes do emprï¿½stimo desativado inserido
     SELECT @id_emprest = id_emprest, @id_conta = id_conta, @saldo_devedor = saldo_devedor
     FROM Emprestimo
     WHERE id_emprest = (SELECT id_emprest FROM inserted);
 
-    -- Verificar se há uma fatura em aberto para a conta associada ao empréstimo desativado
+    -- Verificar se hï¿½ uma fatura em aberto para a conta associada ao emprï¿½stimo desativado
     IF EXISTS (SELECT 1 FROM Fatura WHERE id_conta = @id_conta AND ativo = 1)
     BEGIN
-        -- Atualizar o saldo da fatura com base no valor do saldo_devedor do empréstimo
+        -- Atualizar o saldo da fatura com base no valor do saldo_devedor do emprï¿½stimo
         UPDATE Fatura
         SET valor_emprest = valor_emprest + @saldo_devedor
         WHERE id_conta = @id_conta AND ativo = 1;
     END
     ELSE
     BEGIN
-        -- Criar uma nova fatura com o valor_emprest igual ao saldo_devedor do empréstimo
+        -- Criar uma nova fatura com o valor_emprest igual ao saldo_devedor do emprï¿½stimo
         INSERT INTO Fatura (ativo, id_conta, valor, valor_emprest, dt_venc)
         VALUES (1, @id_conta, 0, @saldo_devedor, DATEADD(MINUTE, 6, GETDATE())); -- Coloque a data desejada para o vencimento da fatura
     END
@@ -676,19 +621,19 @@ BEGIN
            @ValorTransacao = i.valor
     FROM inserted i;
     
-    -- Verificar se a conta pagadora ou beneficiária está ativa
+    -- Verificar se a conta pagadora ou beneficiï¿½ria estï¿½ ativa
     IF (SELECT ativo FROM Cliente WHERE id_cliente = @IdContaPagador) = 0 OR (SELECT ativo FROM [Cliente] WHERE id_cliente = @IdClienteBeneficiario) = 0
     BEGIN
         UPDATE Transacao
         SET status = 'Reprovado'
         WHERE id_trans = (SELECT id_trans FROM inserted);
         
-        RAISERROR('A conta pagadora ou beneficiária não está ativa. A transação foi reprovada.', 16, 1);
+        RAISERROR('A conta pagadora ou beneficiï¿½ria nï¿½o estï¿½ ativa. A transaï¿½ï¿½o foi reprovada.', 16, 1);
         --ROLLBACK;
         RETURN;
     END;
     
-    -- Verificar saldo e efetuar transferência
+    -- Verificar saldo e efetuar transferï¿½ncia
     IF @TipoTransacao IN ('PIX', 'Transferencia', 'Debito')
     BEGIN
         -- Verificar saldo do pagador
@@ -698,12 +643,12 @@ BEGIN
         
         IF @ValorTransacao > @SaldoPagador
         BEGIN
-            -- Valor da transação é maior do que o saldo do pagador, reprovar a transação
+            -- Valor da transaï¿½ï¿½o ï¿½ maior do que o saldo do pagador, reprovar a transaï¿½ï¿½o
             UPDATE Transacao
             SET status = 'Reprovado'
             WHERE id_trans = (SELECT id_trans FROM inserted);
             
-            RAISERROR('Saldo insuficiente na conta do pagador. A transação foi reprovada.', 16, 1);
+            RAISERROR('Saldo insuficiente na conta do pagador. A transaï¿½ï¿½o foi reprovada.', 16, 1);
             --ROLLBACK;
             RETURN;
         END;
@@ -713,32 +658,32 @@ BEGIN
         SET saldo_real = saldo_real - @ValorTransacao
         WHERE id_conta = @IdContaPagador;
         
-        -- Incrementar saldo do beneficiário
+        -- Incrementar saldo do beneficiï¿½rio
         UPDATE Conta
         SET saldo_real = saldo_real + @ValorTransacao
         WHERE id_conta = @IdClienteBeneficiario;
         
-        -- Atualizar status da transação
+        -- Atualizar status da transaï¿½ï¿½o
         UPDATE Transacao
         SET status = 'Aprovado'
         WHERE id_trans = (SELECT id_trans FROM inserted);
     END;
     
-    -- Realizar operação de Depósito
+    -- Realizar operaï¿½ï¿½o de Depï¿½sito
     IF @TipoTransacao = 'Deposito'
     BEGIN
-        -- Incrementar saldo do beneficiário
+        -- Incrementar saldo do beneficiï¿½rio
         UPDATE Conta
         SET saldo_real = saldo_real + @ValorTransacao
         WHERE id_conta = @IdClienteBeneficiario;
         
-        -- Atualizar status da transação
+        -- Atualizar status da transaï¿½ï¿½o
         UPDATE Transacao
         SET status = 'Aprovado'
         WHERE id_trans = (SELECT id_trans FROM inserted);
     END;
 
-    -- Realizar operação de Crédito
+    -- Realizar operaï¿½ï¿½o de Crï¿½dito
     IF @TipoTransacao = 'Credito'
     BEGIN
         DECLARE @LimiteCredito NUMERIC(14,2);
@@ -749,35 +694,35 @@ BEGIN
         
         IF @LimiteCredito >= @ValorTransacao
         BEGIN
-            -- Incrementar saldo do beneficiário
+            -- Incrementar saldo do beneficiï¿½rio
             UPDATE Conta
             SET saldo_real = saldo_real + @ValorTransacao
             WHERE id_conta = @IdClienteBeneficiario;
             
-            -- Reduzir limite de crédito do pagador
+            -- Reduzir limite de crï¿½dito do pagador
             UPDATE Conta
             SET lim_credito = lim_credito - @ValorTransacao
             WHERE id_conta = @IdContaPagador;
             
-            -- Atualizar status da transação
+            -- Atualizar status da transaï¿½ï¿½o
             UPDATE Transacao
             SET status = 'Aprovado'
             WHERE id_trans = (SELECT id_trans FROM inserted);
         END
         ELSE
         BEGIN
-            -- Limite de crédito insuficiente, reprovar a transação
+            -- Limite de crï¿½dito insuficiente, reprovar a transaï¿½ï¿½o
             UPDATE Transacao
             SET status = 'Reprovado'
             WHERE id_trans = (SELECT id_trans FROM inserted);
             
-            RAISERROR('Limite de crédito insuficiente na conta do pagador. A transação foi reprovada.', 16, 1);
+            RAISERROR('Limite de crï¿½dito insuficiente na conta do pagador. A transaï¿½ï¿½o foi reprovada.', 16, 1);
             --ROLLBACK;
             RETURN;
         END;
     END;
 
-    -- Verificar se há uma fatura ativa
+    -- Verificar se hï¿½ uma fatura ativa
     IF @TipoTransacao NOT IN ('Debito', 'PIX', 'Deposito', 'Transferencia')
     BEGIN
         DECLARE @IdFatura INT;
@@ -789,14 +734,14 @@ BEGIN
         
         IF @IdFatura IS NOT NULL
         BEGIN
-            -- Adicionar valor da transação à fatura ativa
+            -- Adicionar valor da transaï¿½ï¿½o ï¿½ fatura ativa
             UPDATE Fatura
             SET valor = valor + @ValorTransacao
             WHERE id_fatura = @IdFatura;
         END
         ELSE
         BEGIN
-            -- Criar nova fatura com o valor da transação
+            -- Criar nova fatura com o valor da transaï¿½ï¿½o
             INSERT INTO Fatura (ativo, id_conta, valor, valor_emprest, dt_venc)
             VALUES (1, @IdContaPagador, @ValorTransacao, 0, DATEADD(minute, 3, GETDATE()));
         END;
@@ -824,7 +769,7 @@ BEGIN
         ) AS F
         WHERE F.RowNum = @counter
 
-        -- Verificar se o ID da fatura já existe na tabela Faturadesativada
+        -- Verificar se o ID da fatura jï¿½ existe na tabela Faturadesativada
         IF NOT EXISTS (SELECT 1 FROM Faturadesativada WHERE id_fatura = @id_fatura)
         BEGIN
             -- Inserir a linha na tabela Faturadesativada
@@ -856,79 +801,78 @@ END;
 GO
 
 
--- Trigger que insere os dados deletado na tabela LOG antes de deletar por si so os usuarios
+-- Trigger que insere os dados deletado na tabela LOG antes de deletar os usuarios
 CREATE OR ALTER TRIGGER trg_DeleteCliente ON [Cliente] INSTEAD OF DELETE AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Armazena os IDs dos clientes a serem excluídos
+    -- Armazena os IDs dos clientes a serem excluÃ­dos
     DECLARE @DeletedClientes TABLE (id_cliente int);
 
-    -- Insere os IDs dos clientes a serem excluídos na tabela temporária
+    -- Insere os IDs dos clientes a serem excluÃ­dos na tabela temporÃ¡ria
     INSERT INTO @DeletedClientes (id_cliente)
     SELECT id_cliente
     FROM deleted;
 
-	-- Inserir os dados dos clientes excluídos na tabela de log
-    INSERT INTO log_cliente_deletado (
-        id_cliente, ativo, nome, cpf, data_nasc, phone, endereco, email, senha, dt_criacao,
-        id_conta, tp_conta, saldo_real, saldo_dolar, saldo_euro, lim_credito, lim_emprest,
-        id_cambio, moeda_origem, moeda_dest, valor_origem, valor_dest, dt_cambio,
-        dt_aplicacao, id_emprest, valor_emprest, taxa_juros, data_contratacao, data_venc,
-        saldo_devedor, id_fatura, numero, titular, dt_validade, code_sec, id_trans, tp_trans, status,
-		data_log_delete
-    )
-    SELECT DISTINCT
-        c.id_cliente, c.ativo, c.nome, c.cpf, c.data_nasc, c.phone, c.endereco, c.email, c.senha, c.dt_criacao,
-        co.id_conta, co.tp_conta, co.saldo_real, co.saldo_dolar, co.saldo_euro, co.lim_credito, co.lim_emprest,
-        ca.id_cambio, ca.moeda_origem, ca.moeda_dest, ca.valor_origem, ca.valor_dest, ca.dt_cambio,
-        i.dt_aplicacao, e.id_emprest, e.valor_emprest, e.taxa_juros, e.data_contratacao, e.data_venc,
-        e.saldo_devedor, f.id_fatura, car.numero, car.titular, car.dt_validade, car.code_sec, t.id_trans, t.tp_trans, t.status,
-		getdate()
-    FROM deleted d
-    LEFT JOIN [Cliente] c ON c.id_cliente = d.id_cliente
-    LEFT JOIN [Conta] co ON co.id_cliente = c.id_cliente
-    LEFT JOIN [Cambio] ca ON ca.id_conta = co.id_conta
-    LEFT JOIN [Investimento] i ON i.id_conta = co.id_conta
-    LEFT JOIN [Emprestimo] e ON e.id_conta = co.id_conta
-    LEFT JOIN [Fatura] f ON f.id_conta = co.id_conta
-    LEFT JOIN [Cartao] car ON car.id_conta = co.id_conta
-    LEFT JOIN [Transacao] t ON (t.id_cliente = c.id_cliente OR t.id_conta = co.id_conta)
-    WHERE c.id_cliente IN (SELECT id_cliente FROM @DeletedClientes);
+    -- Inserir os dados dos clientes excluÃ­dos na tabela de log
+    INSERT INTO log_cliente_deletado (regist_delet)
+    SELECT
+        (
+            SELECT
+                c.id_cliente, c.ativo, c.nome, c.cpf, c.data_nasc, c.phone, c.endereco, c.email, c.senha, c.dt_criacao,
+                co.id_conta, co.tp_conta, co.saldo_real, co.saldo_dolar, co.saldo_euro, co.lim_credito, co.lim_emprest,
+                ca.id_cambio, ca.moeda_origem, ca.moeda_dest, ca.valor_origem, ca.valor_dest, ca.dt_cambio,
+                i.dt_aplicacao, e.id_emprest, e.valor_emprest, e.taxa_juros, e.data_contratacao, e.data_venc,
+                e.saldo_devedor, f.id_fatura, car.numero, car.titular, car.dt_validade, car.code_sec, t.id_trans, t.tp_trans, t.status,
+                getdate() AS data_log_delete
+            FROM deleted d
+            LEFT JOIN [Cliente] c ON c.id_cliente = d.id_cliente
+            LEFT JOIN [Conta] co ON co.id_cliente = c.id_cliente
+            LEFT JOIN [Cambio] ca ON ca.id_conta = co.id_conta
+            LEFT JOIN [Investimento] i ON i.id_conta = co.id_conta
+            LEFT JOIN [Emprestimo] e ON e.id_conta = co.id_conta
+            LEFT JOIN [Fatura] f ON f.id_conta = co.id_conta
+            LEFT JOIN [Cartao] car ON car.id_conta = co.id_conta
+            LEFT JOIN [Transacao] t ON (t.id_cliente = c.id_cliente OR t.id_conta = co.id_conta)
+            WHERE c.id_cliente IN (SELECT id_cliente FROM @DeletedClientes)
+            FOR JSON AUTO
+        )
+    FROM @DeletedClientes dc
+    WHERE dc.id_cliente IS NOT NULL;
 
-    -- Exclui as transações associadas às contas dos clientes
+    -- Exclui as transaÃ§Ãµes associadas Ã s contas dos clientes
     DELETE FROM [Transacao]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
-    -- Exclui as transações associadas diretamente aos clientes
+    -- Exclui as transaÃ§Ãµes associadas diretamente aos clientes
     DELETE FROM [Transacao]
     WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes);
 
-    -- Exclui os registros vinculados à tabela Faturadesativada
+    -- Exclui os registros vinculados Ã  tabela Faturadesativada
     DELETE FROM [Faturadesativada]
     WHERE id_fatura IN (SELECT id_fatura FROM [Fatura] WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes)));
 
-    -- Exclui os registros vinculados à tabela Fatura
+    -- Exclui os registros vinculados Ã  tabela Fatura
     DELETE FROM [Fatura]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
-    -- Exclui os registros vinculados à tabela Investimento
+    -- Exclui os registros vinculados Ã  tabela Investimento
     DELETE FROM [Investimento]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
-    -- Exclui os registros vinculados à tabela Emprestimodesativado
+    -- Exclui os registros vinculados Ã  tabela Emprestimodesativado
     DELETE FROM [Emprestimodesativado]
     WHERE id_emprest IN (SELECT id_emprest FROM [Emprestimo] WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes)));
 
-    -- Exclui os registros vinculados à tabela Emprestimo
+    -- Exclui os registros vinculados Ã  tabela Emprestimo
     DELETE FROM [Emprestimo]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
-    -- Exclui os registros vinculados à tabela Cambio
+    -- Exclui os registros vinculados Ã  tabela Cambio
     DELETE FROM [Cambio]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
-    -- Exclui os registros vinculados à tabela Cartao
+    -- Exclui os registros vinculados Ã  tabela Cartao
     DELETE FROM [Cartao]
     WHERE id_conta IN (SELECT id_conta FROM [Conta] WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes));
 
@@ -939,7 +883,6 @@ BEGIN
     -- Exclui os clientes
     DELETE FROM [Cliente]
     WHERE id_cliente IN (SELECT id_cliente FROM @DeletedClientes);
-
 END;
 
 
